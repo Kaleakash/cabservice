@@ -1,0 +1,68 @@
+<mat-toolbar color="#13abab">
+
+  <mat-toolbar-row>
+    <span><a routerLink="/">My Cab Booking App!</a></span>
+    <span class="spacer"></span>
+    <span><i class="material-icons md-18">
+        phone
+      </i></span>
+    <span>1234567891</span>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+
+    <ul fxLayout="row wrap">
+      <li>
+        <a mat-button routerLink="/book-online" routerLinkActive="mat-accent">Schedule Cab
+          <img src="https://thumbs.dreamstime.com/b/round-clock-taxi-service-car-deadline-schedule-ride-flat-color-line-icon-vector-symbol-sign-illustration-design-isolated-166813087.jpg" width="70px" height="70px"/>
+        </a>
+      </li>
+      <li>
+        <a mat-button routerLink="/fare" routerLinkActive="mat-accent">Fare Information
+          <img src="../../assets/fare.jpg" width="70px" height="70px"/>
+        </a>
+      </li>
+      <li>
+        <a mat-button routerLink="/areas-served" routerLinkActive="mat-accent">Areas Serve
+          <img src="../../assets/route.jpg" width="70px" height="70px"/>       
+        </a>
+      </li>
+      <li>
+        <a mat-button routerLink="/contact-us" routerLinkActive="mat-accent">Contact Us
+          <img src="../../assets/contact.jpg" width="70px" height="70px"/>
+        </a>
+      </li>
+      <li *ngIf="userIsAuthenticated && role === 'admin'">
+        <a mat-button routerLink="/contact-us-list" routerLinkActive="mat-accent">View ContactUsForms
+          <img src="../../assets/contactforms.png" width="70px" height="70px"/>
+
+        </a>
+      </li>
+      <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/schedule-cab-list" routerLinkActive="mat-accent">View ScheduleCabForms
+
+          <img src="../../assets/viewscheduleform.png" width="70px" height="70px"/>
+        </a>
+      </li>
+      <!-- <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/schedule-cab-edit" routerLinkActive="mat-accent">Edit ScheduleCabForms</a>
+      </li> -->
+      <li *ngIf="!userIsAuthenticated">
+        <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login
+          <img src="../../assets/login.jpg" width="70px" height="70px"/>
+        </a>
+      </li>
+      <li *ngIf="!userIsAuthenticated">
+        <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Sign-Up
+          <img src="../../assets/signup.jpg" width="70px" height="70px"/>
+        </a>
+      </li>
+      <li *ngIf="userIsAuthenticated">
+        <a mat-button  (click)=onLogout() routerLinkActive="mat-accent">Logout
+          <img src="../../assets/logout.png" width="70px" height="70px"/>
+        </a>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+
+</mat-toolbar>

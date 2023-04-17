@@ -1,0 +1,65 @@
+<main>
+
+  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2rem" class="mat-body-1">
+
+
+    <div fxFlex="30%">
+      <div *ngIf="tokenInfo">
+      <div class="mat-headline">Add Area Detail</div>
+        
+      <form [formGroup]="areaInfoForm" (ngSubmit)=storeAreaInfoDetails()>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Enter Area Name" formControlName="areaName" required>
+          <mat-error *ngIf="areaInfoForm.get('areaName').invalid">Area name is required.</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput type="number" placeholder="Enter latitude Name" formControlName="latitude" required>
+          <mat-error *ngIf="areaInfoForm.get('latitude').invalid">latitude is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="number" placeholder="Enter longitude Name" formControlName="longitude" required>
+          <mat-error *ngIf="areaInfoForm.get('longitude').invalid">longitude is required.</mat-error>
+        </mat-form-field>
+
+
+        
+        <span fxLayout="row" fxLayoutAlign="space-between">
+          <button mat-stroked-button type="submit" [disabled]="!areaInfoForm.valid">Submit</button>
+        </span>
+
+      </form>
+
+    </div>
+
+
+
+     </div> 
+    <div fxFlex="30%">
+      <div class="mat-headline">Areas Served by Us</div>
+      <ul>
+        <li *ngFor='let area of areas'>{{area.areaName}}</li>
+      </ul>
+    </div>
+
+    <div fxFlex="40%">
+      <agm-map
+        [latitude]="lat"
+        [longitude]="lng"
+        [fullscreenControl]='true'
+        [zoom]='11'
+        [usePanning]='true'
+        [mapTypeControl]='true'
+        (mapReady)=getMapInstance($event)
+        (mapClick)=resetMap()>
+          <agm-marker *ngFor='let marker of markers'
+            [latitude]="marker.lat"
+            [longitude]="marker.lng"
+            [animation]="'DROP'">
+          </agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</main>

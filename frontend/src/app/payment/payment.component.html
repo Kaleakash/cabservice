@@ -1,0 +1,73 @@
+  <h4 mat-dialog-title>Complete Booking</h4>
+  <mat-dialog-content class="mat-typography">
+    <table>
+      <tr>
+        <td>Total Distance:</td>
+        <td>{{ distance }} miles</td>
+      </tr>
+      <tr>
+        <td>Total Fare:</td>
+        <td> {{ fare | currency:'INR' }}</td>
+      </tr>
+    </table>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="center">
+    <button mat-stroked-button color="primary" (click)=enterCardDetails()>Enter Card Details</button>
+    <button mat-stroked-button color="basic" (click)=onCancelClick()>Cancel Payment</button>
+  </mat-dialog-actions>
+  
+  <div *ngIf="paymentFlag">
+    
+    <section class="p-4 p-md-12"> 
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-5">
+      
+        <div class="card rounded-3">
+          <div class="card-body p-4">
+          <div class="text-center mb-4">
+            <h6>Payment</h6>
+          </div>
+       
+  
+            <div class="form-outline mb-8">
+              <input type="text" id="formControlLgXsd" class="form-control form-control-lg" placeholder="Card Holder Name"/>
+            </div>
+  
+            <div class="row mb-12">
+              <div class="col-8">
+                <div class="form-outline">
+                  <input type="text" id="formControlLgXM" class="form-control form-control-lg" placeholder="8723-8912-6578" />
+                </div>
+              </div>
+  
+              <div class="col-6">
+                <div class="form-outline">
+                  <label class="form-label" for="formControlLgExpk">Expire</label>
+                  <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
+                    placeholder="MM/YYYY" />
+                  
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-outline">
+                  <label class="form-label" for="formControlLgcvv">CVV</label>
+                  <input type="password" id="formControlLgcvv" class="form-control form-control-lg" placeholder="CVV" />
+                </div>
+              </div>
+  
+              <div class="col-4">
+                <mat-dialog-actions fxLayoutAlign="center">
+                  <button mat-stroked-button color="primary" (click)=onProceedClick()>Proceed to Payment</button>
+                  <button mat-stroked-button color="basic" (click)=onCancelClick()>Cancel Payment</button>
+                </mat-dialog-actions> 
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </section>
+    
+
+  </div>
